@@ -49,7 +49,7 @@ def d_phase_optimise(tri, vals, func):
 
 def genradgrid(n_radii, n_angles, max_radius=1, min_radius=None):
     if min_radius is None:
-        min_radius = max_radius/10
+        min_radius = max_radius/100
         
     radii = np.linspace(min_radius, max_radius, n_radii)
 
@@ -237,7 +237,6 @@ class PhaseSphere:
         self.phase_names = phase_names
         self.param_names = param_names
         self.set_projection(projection)
-        self.set_initpts()
         self.tri=None
         self.vals=None
         self.boundary=None
@@ -277,13 +276,12 @@ class PhaseSphere:
         elif projection == "elliptical":
             raise NotImplementedException()
         else:
+            print(projection)
             raise RuntimeError("No such projection is supported, try 'azimuthal', 'elliptical' or 'mercator'")
             
     # defines the initial grid
-    def set_initpts(self, ntheta=10, nphi=50):
-        self.num_theta = ntheta
-        self.num_phi = nphi
-        self.set_projection()
+    def set_initpts(self, ntheta, nphi):
+        self.set_projection(num_theta=ntheta, num_phi=nphi)
         
     # Calculates n triangular refinements of the grid.
     def refine(self, n=1):
