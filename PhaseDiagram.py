@@ -165,26 +165,35 @@ class PhasePlane:
     #                   These integers are used to index phase names
     # @param phase_names, a list of strings e,g, ['ferromagnet', 'antiferromagnet']
     # @param projection: either "azimuthal" or "mercator"
-    def __init__(self, phase_func, phase_names, param_names, projection = 'azimuthal'):
+    def __init__(self, phase_func, phase_names, param_names):
         self.func = phase_func
         self.phase_names = phase_names
         self.param_names = param_names
-        self.set_initpts()
+        self.initpts = None
         self.tri=None
         self.vals=None
         self.boundary=None
         self.num_refinements = 0
         
-    # defines the initial grid bsed on the Cartesian product X, Y
-    def set_initpts(self, X, Y):
-        self.initpts= np.vstack((np.repeat(X, len(Y)), np.tile(Y, len(X)))).T
+    # If Y is provided, defines the initial grid bsed on the Cartesian product X, Y
+    # Otherwise, directly uses X as a list of points 
+    def set_initpts(self, X, Y=None):
+        if Y is None:
+            # assume X is a list of points
+            assert len(np.asarray(X).shape) ==2
+            self.initpts = X
+        else:
+            # assume it's a grid
+            self.initpts= np.vstack((np.repeat(X, len(Y)), np.tile(Y, len(X)))).T
         
     # Calculates n triangular refinements of the grid.
     def refine(self, n=1):
         def pfunc(XY):
-            return self.func(*self.XY_to_xyz(XY))
+            return self.func(*(XY.T))
             
         if self.tri is None:
+            if self.initpts is None:
+                raise Exception("No initialisation points provided. Use PhasePlane.set_initpts() first")
             # No triangulation, need to calculate it from initpts
             self.tri, self.vals, self.boundary = phase_optimise(self.initpts, pfunc, num_refinements=n)
             self.num_refinements = n
@@ -210,6 +219,9 @@ class PhasePlane:
             
         self.fig, self.ax = d_plot_phasedia(self.tri, self.vals, self.boundary, self.phase_names,
                                             cmap, show_boundary, show_triangulation)
+        
+        self.ax.set_xlabel(self.param_names[0])
+        self.ax.set_ylabel(self.param_names[1])
     
     
     
