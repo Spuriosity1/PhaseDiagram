@@ -2,9 +2,16 @@
 
 from setuptools import setup
 
+
+# read the contents of your README file
+from pathlib import Path
+this_directory = Path(__file__).parent
+long_description = (this_directory / "README.md").read_text()
+
+
 setup(
         name="PhaseDiagram",
-        version="0.1",
+        version="0.2",
         packages=['PhaseDiagram'],
         package_dir={
             'PhaseDiagram': 'src',
@@ -12,6 +19,8 @@ setup(
         licence="GPLv3+",
         author="Spuriosity1",
         description="Adaptive-grid phase diagram calculation and plotting routines",
+	long_description=long_description,
+	long_description_content_type='text/markdown',
         url="https://github.com/Spuriosity1/PhaseDiagram",
         classifiers=[
             "Development Status :: 3 - Alpha",
