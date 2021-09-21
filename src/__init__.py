@@ -377,7 +377,7 @@ class PhaseSphere:
             self.plot_contour(2, d, 'blue')
 
         self.ax.tick_params(axis='x', which='both', bottom=False, top=False, labelbottom=False) 
-        self.ax.tick_params(axis='y', which='both', bottom=False, top=False, labelbottom=False) 
+        self.ax.tick_params(axis='y', which='both', left=False, right=False, labelleft=False) 
 
     # plots a point on the phase diagram corresponding to x,y,z
     # note that these are projected to the unit sphere
