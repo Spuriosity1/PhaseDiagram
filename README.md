@@ -10,7 +10,7 @@ The general idea:
 3. For every triangle with disagreeing edges, add an extra point in its centre.
 4. Repeat.
 
-This is defined for both 2D phase digrams, and for 3D unit sphere projections where 3 competing parameters are show normalised, e.g. to an overall energy scale.
+This is defined for both 2D phase digrams, and for 3D unit sphere projections where 3 competing parameters are normalised, e.g. to an overall energy scale.
 
 ##Example usage
 
