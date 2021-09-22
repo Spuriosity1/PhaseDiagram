@@ -12,11 +12,8 @@ The general idea:
 
 This is defined for both 2D phase digrams, and for 3D unit sphere projections where 3 competing parameters are show normalised, e.g. to an overall energy scale.
 
-Example usage, with a directory structure as follows:
-```
-test/PhaseDiagram.py
-test/test.py
-```
+##Example usage
+
 
 ```python3
 import numpy as np                 

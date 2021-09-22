@@ -11,7 +11,7 @@ long_description = (this_directory / "README.md").read_text()
 
 setup(
         name="PhaseDiagram",
-        version="0.3",
+        version="0.3.2",
         packages=['PhaseDiagram'],
         package_dir={
             'PhaseDiagram': 'src',
