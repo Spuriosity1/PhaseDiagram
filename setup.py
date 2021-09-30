@@ -16,12 +16,16 @@ setup(
         package_dir={
             'PhaseDiagram': 'src',
         },
+        install_requires=['numpy','scipy','matplotlib'],
         licence="GPLv3+",
         author="Spuriosity1",
         description="Adaptive-grid phase diagram calculation and plotting routines",
 	long_description=long_description,
 	long_description_content_type='text/markdown',
         url="https://github.com/Spuriosity1/PhaseDiagram",
+        project_urls={
+            'Bug Reports': 'https://github.com/Spuriosity1/PhaseDiagram/issues'
+            },
         classifiers=[
             "Development Status :: 3 - Alpha",
             "Programming Language :: Python :: 3",
@@ -31,3 +35,4 @@ setup(
             "Topic :: Scientific/Engineering :: Physics",
             ],
     )
+
