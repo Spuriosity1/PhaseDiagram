@@ -1,4 +1,4 @@
 __pycache__
 reinstall.sh
-*.egg_info
+PhaseDiagram.egg-info
 dist/*
