@@ -18,4 +18,22 @@ ps = PhaseSphere(phase, ['A', 'B', 'C','D'], param_names = ['X1','X2','X3'],proj
 ps.refine(8)
 ps.plot(show_triangulation=True)
 
+
+ps = PhaseSphere(phase, ['A', 'B', 'C','D'], param_names = ['X1','X2','X3'],projection="cylindrical")
+ps.refine(8)
+ps.plot(show_triangulation=True)
+
+ps = PhaseSphere(phase, ['A', 'B', 'C','D'], param_names = ['X1','X2','X3'],projection="elliptical1")
+ps.refine(8)
+ps.plot(show_triangulation=True)
+
+
+ps = PhaseSphere(phase, ['A', 'B', 'C','D'], param_names = ['X1','X2','X3'],projection="elliptical2")
+ps.refine(8)
+ps.plot(show_triangulation=True)
+
+
+
+print(ps.initpts)
+
 plt.show()
